@@ -51,6 +51,8 @@ public class FXMLController implements Initializable {
     @FXML
     private CheckBox seamarksCheckBox;
     @FXML
+    private CheckBox showGraticuleCheckBox;
+    @FXML
     private ComboBox mapLayerComboBox;
     @FXML
     private ComboBox projectionComboBox;
@@ -172,6 +174,11 @@ public class FXMLController implements Initializable {
             } else {
                 map.getChildren().remove(mapLayer);
             }
+        });
+
+        showGraticuleCheckBox.setSelected(true);
+        showGraticuleCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            mapGraticule.setVisible(newValue);
         });
 
         MapProjection[] projections = new MapProjection[]{
